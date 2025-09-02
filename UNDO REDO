@@ -1,0 +1,62 @@
+undo_stack=[]
+redo_stack=[]
+
+
+
+
+
+
+
+def make_change():
+            
+            
+            text=input("Enter the text")
+            undo_stack.append(text)
+            redo_stack.clear()
+            print(text)
+            current_details()
+            
+
+def undo_actoin():
+            if undo_stack:
+                x=undo_stack.pop()
+                redo_stack.append(x)
+                print(*undo_stack)
+            else:
+                print("no undo_action possible")
+
+def redo_action():
+            if redo_stack:
+                x=redo_stack.pop()
+                undo_stack.append(x)
+               
+            else:
+                print("no redo action posible") 
+            current_details()
+def current_details():
+    print("current sentence",*undo_stack)
+    print("current sentence",*redo_stack)     
+          
+           
+        
+while True:            
+    print("---Enter the choice---")
+    print("1.perform make change")
+    print("2.perform undo action")
+    print("3.perform redo action")
+    print("4.display current details")
+    print("5.exit")
+    choice=int(input("Enter the choice"))
+    match choice :
+        case 1:
+            make_change()
+        case 2:
+            undo_actoin()
+                   
+        case 3:
+            redo_action()            
+        
+        case 4:
+            current_details()
+        case 5: 
+            exit()
